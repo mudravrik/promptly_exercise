@@ -2,7 +2,6 @@
 """
 import json
 import logging
-import os
 from json import JSONDecodeError
 from pathlib import Path
 from typing import Dict
@@ -53,6 +52,7 @@ class JsonDeserializer:
 
 class PathHandler:
     """Basic tool for safe work with paths"""
+
     @staticmethod
     def create_path_from_dir_and_filename(dir_path: str, filename: str) -> Path:
         """Create Path from path to directory and filename.

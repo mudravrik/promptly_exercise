@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def questionnaire_value():
     return "test_value"

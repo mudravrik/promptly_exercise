@@ -36,7 +36,7 @@ def test_get_str_answers_from_deserialized_json_when_result_is_single(
 
 
 def test_get_str_answers_from_deserialized_json_when_result_is_empty(
-    deser_json_with_empty_result
+    deser_json_with_empty_result,
 ):
     result = QuestionnaireResultHandler.get_str_answers_from_deserialized_json(
         deser_json_with_empty_result
@@ -62,7 +62,9 @@ def test_get_str_answers_from_deserialized_json_when_result_is_na(caplog):
 
 def test_get_str_answers_from_deserialized_json_when_result_invalid(caplog):
     with caplog.at_level(logging.INFO):
-        result = QuestionnaireResultHandler.get_str_answers_from_deserialized_json("foo")
+        result = QuestionnaireResultHandler.get_str_answers_from_deserialized_json(
+            "foo"
+        )
         assert len(caplog.records) == 1
         assert "Unknown input for QuestionnaireResult" in caplog.records[0].msg
         assert result == "foo"

@@ -18,9 +18,7 @@ def test_questionnaire_result_choice_if_non_string_given(float_questionnaire_fie
 
 
 def test_questionnaire_result_choice_if_zero_given():
-    test_quest = QuestionnaireResult(
-        choice=0, value=0
-    )
+    test_quest = QuestionnaireResult(choice=0, value=0)
     assert test_quest.value == "0"
     assert test_quest.choice == "0"
     assert test_quest.answer == "0"

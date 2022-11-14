@@ -42,7 +42,7 @@ class QuestionnaireResultHandler:
             if not pd.isna(deserialized_input):
                 logger.info(
                     "Unknown input for QuestionnaireResult: %s, check data upstream!",
-                    deserialized_input
+                    deserialized_input,
                 )
             return deserialized_input
         if not deserialized_input:
@@ -65,6 +65,7 @@ class QuestionnaireResultHandler:
             return ", ".join(answers)
         else:
             return pd.NA
+
     @classmethod
     def _create_results_from_list_of_dicts(
         cls, list_of_dicts: List[Dict[str, Union[float, str]]]

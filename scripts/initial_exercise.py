@@ -4,7 +4,7 @@ from collections import defaultdict
 import pandas as pd
 
 
-df = pd.read_csv('source_data.csv', index_col=0)
+df = pd.read_csv('resources/source_data.csv', index_col=0)
 
 birthday_col_nm = 'birthdate'
 completed_col_name = 'completed_at'
@@ -32,7 +32,7 @@ df = df.loc[df["disease"] == "Cataract", :]
 for val in df.loc[:, 'answers']:
     d_types_dict[type(val)] += 1
 assert len(list(d_types_dict.keys())) == 1
-df_answers = pd.json_normalize(df['answers'])
+df_answers = pd.json_normalize(df['answers']).set_index(df.index)
 
 def value_choice_extractor(dictionary):
     for key in dictionary.keys():
@@ -62,4 +62,4 @@ for val in df["completed_at"]:
 df["is_assessment_fully_completed"] = is_assessment_fully_completed
 df = df.loc[df["is_assessment_fully_completed"] == True, :]
 df = df.drop(columns="is_assessment_fully_completed")
-df.to_csv('processed_data.csv')
+df.to_csv('results/old_processed_data.csv')
